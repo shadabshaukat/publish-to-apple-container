@@ -1,7 +1,7 @@
-# Publish to macOS Apple Container
+# Publish to Apple Container
 A list of container build commands to build Apple containers
 
-# Postgres 17.5 Apple Container
+# [1] Postgres 17.5 ARM64 Apple Container
 
 ```bash
 container run \
@@ -32,7 +32,7 @@ PGPASSWORD=mypasswd1234 psql -h 192.168.64.2 -p 5432 -U postgres -d myappdb
 container exec -it postgres17 sh -c "PGPASSWORD=mypasswd1234 psql -h 192.168.64.2 -p 5432 -U postgres -d myappdb"
 ```
 
-# Postgres 15.6 Apple Container
+# [2] Postgres 15.6 ARM64 Apple Container
 
 ```bash
 container run \
@@ -64,4 +64,54 @@ PGPASSWORD=mypasswd1234 psql -h 192.168.64.3 -p 5432 -U postgres -d myappdb
 
 ```bash
 container exec -it postgres15 sh -c "PGPASSWORD=mypasswd1234 psql -h 192.168.64.3 -p 5432 -U postgres -d myappdb"
+```
+
+# [3] MySQL 9.3 ARM64 Apple Container
+
+```bash
+container run \
+ --name mysql9 \
+ -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+ -d \
+ arm64v8/mysql
+```
+
+```bash
+container exec -it mysql9 /bin/bash
+```
+
+```bash
+mysql
+```
+
+```bash
+mysql> show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+```
+
+```bash
+mysql> select @@version;
+
++-----------+
+| @@version |
++-----------+
+| 9.3.0     |
++-----------+
+
+mysql> \q
+Bye
+
+bash-5.1# exit
+```
+
+```bash
+container exec -it mysql9 mysql
 ```
