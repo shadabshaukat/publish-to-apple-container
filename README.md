@@ -1,5 +1,5 @@
 # Publish to Apple Container
-## A curated list of Database containers build on Apple container
+## A curated list of Database containers built with Apple container
 
 # [1] Oracle Database 23ai (23.7) Free ARM64 Apple Container
 
