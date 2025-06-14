@@ -1,7 +1,45 @@
 # Publish to Apple Container
 ## A curated list of containers to build on Apple container
 
-# [1] Postgres 17.5 ARM64 Apple Container
+# [1] Oracle Database 23ai (23.7) Free ARM64 Apple Container
+
+```bash
+container image pull gvenzl/oracle-free:slim-arm64
+```
+
+```bash
+container run --entrypoint=/bin/bash -it --rm --name oracle23ai --cpus 4 --memory 16g -e ORACLE_PASSWORD=free gvenzl/oracle-free:slim-arm64
+```
+
+```bash
+7zzs x FREE.7z
+```
+
+```bash
+./container-entrypoint.sh &
+```
+
+```bash
+sqlplus "/as sysdba"
+```
+
+```bash
+SQL> select open_mode,name from v$database;
+
+OPEN_MODE	     NAME
+-------------------- ---------
+READ WRITE	     FREE
+
+SQL> show pdbs;
+
+    CON_ID CON_NAME			  OPEN MODE  RESTRICTED
+---------- ------------------------------ ---------- ----------
+	 2 PDB$SEED			  READ ONLY  NO
+	 3 FREEPDB1			  READ WRITE NO
+```
+
+
+# [2] Postgres 17.5 ARM64 Apple Container
 
 ```bash
 container run \
@@ -12,7 +50,7 @@ container run \
  -e POSTGRES_LISTEN_ADDRESS=0.0.0.0 \
  -d \
  arm64v8/postgres:17.5
-```
+```bash
 
 ```bash
 container ls -a
@@ -32,7 +70,7 @@ PGPASSWORD=mypasswd1234 psql -h 192.168.64.2 -p 5432 -U postgres -d myappdb
 container exec -it postgres17 sh -c "PGPASSWORD=mypasswd1234 psql -h 192.168.64.2 -p 5432 -U postgres -d myappdb"
 ```
 
-# [2] Postgres 15.6 ARM64 Apple Container
+# [3] Postgres 15.6 ARM64 Apple Container
 
 ```bash
 container run \
@@ -66,7 +104,7 @@ PGPASSWORD=mypasswd1234 psql -h 192.168.64.3 -p 5432 -U postgres -d myappdb
 container exec -it postgres15 sh -c "PGPASSWORD=mypasswd1234 psql -h 192.168.64.3 -p 5432 -U postgres -d myappdb"
 ```
 
-# [3] MySQL 9.3 ARM64 Apple Container
+# [4] MySQL 9.3 ARM64 Apple Container
 
 ```bash
 container run \
