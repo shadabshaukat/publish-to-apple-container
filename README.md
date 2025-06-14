@@ -1,5 +1,5 @@
 # Publish to Apple Container
-A list of container build commands to build Apple containers
+## A curated list ofcontainers to build on Apple container
 
 # [1] Postgres 17.5 ARM64 Apple Container
 
